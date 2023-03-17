@@ -1,35 +1,51 @@
-# PMODE Step VerilogHDL Basys3
+# Breast Cancer Detection Using Logistic Regression
 
-![Basys3 Board](https://st2.myideasoft.com/shop/dr/21/myassets/products/964/pr_01_1964.png?revision=1419240942)
+This project explores the use of logistic regression for breast cancer detection using the Breast Cancer Wisconsin (Diagnostic) Dataset.
 
-This project contains the Verilog HDL code for implementing a PMODE step on the Basys3 FPGA development board.
+To train the model, I used a dataset from the "UCI" archive provided by "Dr. Wolberg" in 1992. There are 10 dependent and 1 independent variables in the dataset. We will determine whether the tumor is benign or malignant according to 10 dependent variables. 2 means benign, 4 means malignant.
 
-## Overview
+Attribute Information:
 
-The PMODE step is a useful circuit for controlling the direction of rotation of a stepper motor. The PMODE step circuit consists of four switches (SW0-SW3) and four output pins (LED0-LED3). When the switches are pressed in a particular sequence, the corresponding LED pins will light up in a particular sequence. This sequence of LED pin activations determines the direction and speed of the stepper motor.
+  * Sample code number: id number
+  * Clump Thickness: 1 - 10
+  * Uniformity of Cell Size: 1 - 10
+  * Uniformity of Cell Shape: 1 - 10
+  * Marginal Adhesion: 1 - 10
+  * Single Epithelial Cell Size: 1 - 10
+  * Bare Nuclei: 1 - 10
+  * Bland Chromatin: 1 - 10
+  * Normal Nucleoli: 1 - 10
+  * Mitoses: 1 - 10
+  * Class: (2 for benign, 4 for malignant)
 
-![PMODE Step Circuit](https://digilent.com/reference/_media/reference/pmod/pmodstep/pmodstep-0.png)
+**More information about the data set is in this link : https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Original%29**
 
-## Design
+## Installation
 
-The PMODE step circuit is implemented using Verilog HDL. The design consists of a state machine that controls the behavior of the circuit based on the input from the four switches. The state machine has four states, each corresponding to a particular sequence of LED pin activations. The state machine transitions between these states based on the input from the switches.
+To run this project, you will need Python 3.x and the following packages:
 
-The Verilog HDL code is written to be compatible with the Basys3 FPGA development board. The input signals are read from the switches and the output signals are written to the LED pins on the board.
+- numpy
+- pandas
+- scikit-learn
+- matplotlib
+- seaborn
+
+You can install these packages using pip:
+
+    pip install numpy pandas scikit-learn matplotlib seaborn 
 
 ## Usage
 
-To use this Verilog HDL code on the Basys3 FPGA development board, follow these steps:
+To run the logistic regression model for breast cancer detection, run the following command:
 
-1. Clone or download this repository.
-2. Open the project in a Verilog HDL synthesis tool such as Xilinx Vivado or Intel Quartus Prime.
-3. Synthesize the design and generate the bitstream.
-4. Program the bitstream onto the Basys3 FPGA development board.
 
-Once the bitstream has been programmed onto the board, you can test the circuit by pressing the switches in the appropriate sequence and observing the LED pins.
+This will train the logistic regression model on the Breast Cancer Wisconsin (Diagnostic) Dataset, evaluate its performance on a testing set, and output the results.
 
-## Credits
+The `Breast_cancer_detection.ipynb` file contains the code for preprocessing the data, splitting it into training and testing sets, training the logistic regression model, evaluating its performance, and visualizing the data.
 
-This project was developed by [Feanor1021](https://github.com/Feanor1021). The author would like to acknowledge the contributions of the Xilinx Vivado and Intel Quartus Prime tools to this project.
+## Results
+
+The logistic regression model achieves an accuracy of over 95% in predicting whether a tumor is malignant or benign. Feature selection and regularization techniques are found to be effective in improving the performance of the model. The top 10 features selected by the model are found to be highly correlated with breast cancer diagnosis. Data visualization techniques reveal several interesting patterns and relationships between the various characteristics of the tumors and their malignancy.
 
 ## License
 
